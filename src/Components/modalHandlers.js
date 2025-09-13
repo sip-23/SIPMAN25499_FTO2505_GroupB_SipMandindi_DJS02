@@ -132,6 +132,7 @@ function populateSeasonList(seasonsData) {
         seasonsContainer.innerHTML = '';
         
         if (seasonsData && seasonsData.seasonDetails) {
+            seasonsContainer.innerHTML = `<h2 class="block text-xl font-medium text-[#fff] mb-4">Seasons</h2>`
             seasonsData.seasonDetails.forEach(season => {
                 const seasonElement = document.createElement('div');
                 seasonElement.className = 'w-full px-2 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-600 text-gray-400 [&>option:checked]:text-black mb-3';
