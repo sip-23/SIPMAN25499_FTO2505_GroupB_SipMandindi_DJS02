@@ -18,7 +18,7 @@ const podcastsContainer = document.getElementById('podcasts-container');
  */
 function createCardElement() {
     const element = document.createElement('div');
-    element.className = 'min-w-[280px] max-h-[350px] flex flex-col hover:bg-[#65350F] p-5 gap-1 rounded-lg bg-[#282828] transition-colors cursor-pointer';
+    element.className = 'min-w-[280px] max-w-[285px] max-h-[350px] flex flex-col hover:bg-[#65350F] p-5 gap-1 rounded-lg bg-[#282828] transition-colors cursor-pointer';
     return element;
 }
 

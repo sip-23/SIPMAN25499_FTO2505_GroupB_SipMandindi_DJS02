@@ -74,7 +74,7 @@
     <main class="h-screen flex flex-1 flex-shrink-0 relative overflow-x mt-[60px]">        
 
         <!-- Sidebar -->
-        <aside id="sidebar" class="hidden lg:block absolute lg:relative lg:h-full lg:h-fit pt-6 w-[350px] bg-[#121212] flex-shrink-0 p-5 z-40 border-r border-[#333]">
+        <aside id="sidebar" class="hidden absolute lg:relative lg:h-full lg:h-fit pt-6 w-[350px] bg-[#121212] flex-shrink-0 p-5 z-40 border-r border-[#333]">
             <div class="w-full flex flex-col ">
                 <button class="flex items-center w-[315px] h-[55px] -mx-5 gap-3 cursor-pointer rounded-l rounded-full transition-colors hover:bg-[#65350F]">
                   <div class="flex items-center gap-3 ml-6">
@@ -284,7 +284,7 @@
                         </g>
                     </svg>
                 </button>
-                <div id="podcasts-container" class="flex items-center gap-6 w-[260px] md:w-[500px] lg:w-[900px] flex flex-1 flex-shrink-0 h-[370px] px-1 py-2 overflow-y-auto">
+                <div id="podcasts-container" class="flex items-center gap-6 w-[290px] md:w-[500px] lg:w-[900px] flex flex-1 flex-shrink-0 h-[370px] px-1 py-2 overflow-y-auto">
                   <!-- Music Cards -->
                   <div class="min-w-[280px] max-h-[350px] flex flex-col hover:bg-[#65350F] p-5 gap-1 rounded-lg bg-[#282828] transition-colors cursor-pointer">
                       <img src="assets/SippiCup_logo.png" alt="Album" class="rounded-md mb-4 w-[240px] h-[190px]">
@@ -462,15 +462,7 @@
               </div>
               <h1 class="text-2xl font-bold text-white mb-6">Playlist by Recently Updated</h1>
               <div class="flex items-center mb-[100px]">
-                  <button class="p-1 lg:p-4">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24">
-                          <g>
-                              <path fill="#b3b3b3" d="M0 0h24v24H0z"/>
-                              <path d="M10.828 12l4.95 4.95-1.414 1.414L8 12l6.364-6.364 1.414 1.414z"/>
-                          </g>
-                      </svg>
-                  </button>
-                  <div class="flex items-center gap-6 w-[260px] md:w-[500px] lg:w-[900px] flex flex-1 flex-shrink-0 h-[370px] px-1 py-2 overflow-y-auto">
+                  <div id="podcastGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mx-auto px-1 py-2">
                     <!-- Music Cards -->
                     <div class="min-w-[280px] max-h-[350px] flex flex-col hover:bg-[#65350F] p-5 gap-1 rounded-lg bg-[#282828] transition-colors cursor-pointer">
                         <img src="assets/SippiCup_logo.png" alt="Album" class="rounded-md mb-4 w-[240px] h-[190px]">
@@ -678,14 +670,6 @@
                         <p class="text-sm text-[#b3b3b3] truncate">Updated x days ago</p>
                     </div>
                   </div>
-                  <button class="p-1 lg:p-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24">
-                        <g>
-                            <path fill="#b3b3b3" d="M0 0h24v24H0z"/>
-                            <path d="M13.172 12l-4.95-4.95 1.414-1.414L16 12l-6.364 6.364-1.414-1.414z"/>
-                        </g>
-                    </svg>
-                </button>
               </div>
             </div>
         </section>
@@ -750,7 +734,7 @@
     </div>
 
     <!-- Player Controls -->
-    <footer class="bottom-0 left-0 right-0 w-full fixed bg-[#181818] h-25 flex-1 flex-shrink-0 flex flex-col items-center justify-between border-t border-[#333] p-4 text-[#b3b3b3] z-50">
+    <footer class="hidden bottom-0 left-0 right-0 w-full fixed bg-[#181818] h-25 flex-1 flex-shrink-0 flex flex-col items-center justify-between border-t border-[#333] p-4 text-[#b3b3b3] z-50">
         <!-- Progress Bar -->
         <div class="flex items-center w-full mb-4">
             <span class="w-12 text-right" id="currentTime">0:00</span>
@@ -871,6 +855,6 @@
             </div>
         </div>
     </footer>
-    <script type="module" src="src/main.js"></script>
+    <script type="module" src="src/index.js"></script>
   </body>
 </html>
