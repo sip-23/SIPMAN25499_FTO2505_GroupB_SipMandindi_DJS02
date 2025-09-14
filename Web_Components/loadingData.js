@@ -3,12 +3,29 @@ const genreFilter = document.getElementById('genre-filter');
 const sortBy = document.getElementById('sort-by');
 
 // Looading podcast data 
+/**
+ * Dynamically imports the podcast and genre data from data.js.
+ *
+ * @async
+ * @function loadPodcastData
+ * @returns {Promise<{ podcasts: Object[], genres: Object[] }>} 
+ * An object containing the podcasts array and genres array.
+ */
 async function loadPodcastData() {
     const module = await import("./data.js");
     return { podcasts: module.podcasts, genres: module.genres };
 }
 
 // Populating the genre filter dropdown options taken from the Genres array
+/**
+ * Populates the genre filter dropdown with options from the genres array.
+ *
+ * @function populateGenreFilter
+ * @param {Object[]} genres - Array of genre objects.
+ * @param {number} genres[].id - Unique identifier for the genre.
+ * @param {string} genres[].title - Display title of the genre.
+ * @returns {void}
+ */
 function populateGenreFilter(genres) {
     genres.forEach(genre => {
         const option = document.createElement('option');
@@ -19,6 +36,14 @@ function populateGenreFilter(genres) {
 }
 
 // Displaying the podcasts
+/**
+ * Renders podcast preview components inside the podcasts container.
+ *
+ * @function displayPodcasts
+ * @param {Object[]} podcasts - Array of podcast objects.
+ * @param {Object[]} genres - Array of genre objects used to resolve genre IDs into names.
+ * @returns {void}
+ */
 function displayPodcasts(podcasts, genres) {
     podcastsContainer.innerHTML = '';
     
@@ -42,6 +67,15 @@ function displayPodcasts(podcasts, genres) {
 }
 
 // Filtering and sorting podcasts
+/**
+ * Filters and sorts podcasts based on selected genre and sorting criteria.
+ * Updates the display with the filtered and sorted results.
+ *
+ * @function filterAndSortPodcasts
+ * @param {Object[]} podcasts - Array of podcast objects.
+ * @param {Object[]} genres - Array of genre objects used to resolve genre IDs into names.
+ * @returns {void}
+ */
 function filterAndSortPodcasts(podcasts, genres) {
     const selectedGenre = genreFilter.value;
     const sortCriteria = sortBy.value;

@@ -1,5 +1,15 @@
+/**
+ * Web Component that displays a preview card for a podcast.
+ * Includes image, title, seasons, genres, and update information.
+ *
+ * @element podcast-preview
+ * @fires podcastSelected - Dispatched when a card is clicked, includes { id, title, image } in detail.
+ */
 class PodcastPreview extends HTMLElement {
     // this constructor makes sure we call our only html constructor
+     /**
+     * Creates a PodcastPreview element with shadow DOM and default values.
+     */
     constructor() {
         // calling the base class
         super();
@@ -16,11 +26,23 @@ class PodcastPreview extends HTMLElement {
     }
     
     // Defining the the attributes to observe
+     /**
+     * Defines which attributes should be observed for changes.
+     * @returns {string[]} List of attribute names.
+     */
     static get observedAttributes() {
         return ['image', 'title', 'genres', 'seasons', 'updated'];
     }
     
     // Handle attribute changes
+     /**
+     * Called whenever an observed attribute is added, removed, or changed.
+     *
+     * @param {string} name - The name of the changed attribute.
+     * @param {string|null} oldValue - The old attribute value.
+     * @param {string|null} newValue - The new attribute value.
+     * @returns {void}
+     */
     attributeChangedCallback(name, oldValue, newValue) {
         if (oldValue === newValue) return;
         
@@ -53,6 +75,11 @@ class PodcastPreview extends HTMLElement {
     }
     
     // Calculating the days since last update
+    /**
+     * Calculates the number of days since the podcast was last updated.
+     *
+     * @returns {number} Days since last update. Returns 0 if no update date is available.
+     */
     calculateDaysSinceUpdate() {
         if (!this._updated) return 0;
         
@@ -63,6 +90,13 @@ class PodcastPreview extends HTMLElement {
     }
     
     // Handle click events
+    /**
+     * Handles click events on the podcast card.
+     * Dispatches a `podcastSelected` event with details.
+     *
+     * @fires podcastSelected
+     * @returns {void}
+     */
     handleClick() {
         // Creating and dispatching a custom event
         const podcastEvent = new CustomEvent('podcastSelected', {
@@ -79,6 +113,11 @@ class PodcastPreview extends HTMLElement {
     
     // Render the component
     // also added Tailwind css inside Web component shadow DOM as it it was only inject its styles onto the global document and not shadow roots
+    /**
+     * Renders the podcast preview card inside the shadow DOM.
+     *
+     * @returns {void}
+     */
     render() {
         const daysSinceUpdate = this.calculateDaysSinceUpdate();
         
@@ -188,6 +227,12 @@ class PodcastPreview extends HTMLElement {
     }
     
     // Rendering using connected Callback life cycle event: When the element is added to the DOM we can this call
+    /**
+     * Called when the component is added to the DOM.
+     * Triggers initial render.
+     *
+     * @returns {void}
+     */
     connectedCallback() {
         this.render();
     }
