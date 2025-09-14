@@ -90,10 +90,10 @@ class PodcastModal extends HTMLElement {
       : "";
 
     // Set image (handle missing image)
-    this.imageEl.src = podcast.image || "placeholder.jpg"; // replace with placeholder if needed
+    this.imageEl.src = podcast.image || "placeholder.jpg";
     this.imageEl.alt = podcast.title || "Podcast image";
 
-    // Render genres
+    // Rendering genres
     this.genreListEl.innerHTML = "";
     if (Array.isArray(podcast.genres) && podcast.genres.length > 0) {
       podcast.genres.map(id => genres.find(g => g.id === id)?.title || "Unknown")
@@ -107,7 +107,7 @@ class PodcastModal extends HTMLElement {
       this.genreListEl.innerHTML = "<em>No genres available</em>";
     }
 
-    // Render seasons
+    // Rendering seasons
     this.seasonsEl.innerHTML = "";
     if (Array.isArray(podcast.seasons) && podcast.seasons.length > 0) {
       podcast.seasons.forEach(s => {
@@ -131,14 +131,14 @@ class PodcastModal extends HTMLElement {
 // Define the element
 customElements.define("podcast-modal", PodcastModal);
 
-// Ensure a modal exists in the DOM
+// Does the modal exists in the DOM
 let modalEl = document.querySelector("podcast-modal");
 if (!modalEl) {
   modalEl = document.createElement("podcast-modal");
   document.body.appendChild(modalEl);
 }
 
-// Attach click events to podcast cards
+// Attaching click events to podcast cards
 document.querySelectorAll(".podcast-card").forEach(card => {
   card.addEventListener("click", () => {
     const podcastId = parseInt(card.getAttribute("data-id"));
